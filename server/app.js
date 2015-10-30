@@ -5,7 +5,8 @@ app.set("port", process.env.PORT || 3000);
 
 app.get('/*', function(request, response){
   var file = request.params[0] || 'index.html';
-  response.sendFile(path.join(__dirname,file));
+  //response.sendFile(path.join(__dirname,file));
+  response.send('hi');
 });
 
 app.listen(app.get('port'), function(){

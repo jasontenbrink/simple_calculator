@@ -1,0 +1,17 @@
+.container{
+  width: 30px;
+  height: 30px;
+  background-color: red;
+
+}
+.number{
+  width: 50px;
+  height: 30px;
+  border: 2px solid;
+}
+
+.operator{
+  width: 30px;
+  height: 30px;
+  border: 2px solid;
+}

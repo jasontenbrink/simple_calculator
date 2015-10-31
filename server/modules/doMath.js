@@ -1,4 +1,6 @@
 function doMath(x,y,type) {
+  x = parseFloat(x);
+  y = parseFloat(y);
   var result = 0;
   switch (type) {
     case 'add':

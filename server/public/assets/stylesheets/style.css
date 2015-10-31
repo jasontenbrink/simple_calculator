@@ -1,17 +1,15 @@
-.container{
-  width: 30px;
-  height: 30px;
-  background-color: red;
 
-}
 .number{
-  width: 50px;
-  height: 30px;
-  border: 2px solid;
+  text-align: center;
+  margin-right: 5%;
 }
-
-.operator{
-  width: 30px;
-  height: 30px;
-  border: 2px solid;
+#answer{
+  text-align: right;
+border: 2px solid rgba(0, 2, 6, 0.2);
+margin-bottom: 10px;
+border-radius: 5px;
+}
+#Calculator{
+  font-size: 300%;
+  text-align: center;
 }

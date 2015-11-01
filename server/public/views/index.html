@@ -9,46 +9,53 @@
 
   <title></title>
 </head>
-<body class="col-md-12">
-  <div class="jumbotron">Hi!!</div>
-  <div id="Calculator" class="col-md-5 col-xs-12">
-        <div class="row">
-          <div id="answer" class=" col-md-12">0.00</div>
-        </div>
-        <div class="row">
-            <div id="numberContainer" class="col-md-9 container">
-                  <div class="row">
-                    <div id="one" class="number well col-md-3" >1</div>
-                    <div id="two" class="number well col-md-3">2</div>
-                    <div class="number well col-md-3">3</div>
-                  </div>
-                  <div class="row">
-                    <div class="number well col-md-3">4</div>
-                    <div class="number well col-md-3">5</div>
-                    <div class="number well col-md-3">6</div>
-                  </div>
-                  <div class="row">
-                    <div class="number well col-md-3">7</div>
-                    <div class="number well col-md-3">8</div>
-                    <div class="number well col-md-3">9</div>
-                  </div>
-                  <div class="row">
-                    <div class="number well col-md-8">0</div>
-                    <div id="dot" class="well calc-button col-md-3">.</div>
-                  </div>
+<body class="container-fluid">
+  <div class="banner"><p id="math">MATH!!</p></div>
+  <div class="row">
+      <div class="col-md-2"></div>
+      <div id="Calculator" class="col-md-4 ">
+            <div class="row">
+              <div id="answer" class=" col-md-12">0.00</div>
             </div>
+            <div class="row">
+                <div id="numberContainer" class="col-md-9 ">
+                      <div class="row">
+                        <div id="one" class="number well btn col-md-3" >1</div>
+                        <div id="two" class="number well  btn col-md-3">2</div>
+                        <div class="number well col-md-3 btn ">3</div>
+                      </div>
+                      <div class="row">
+                        <div class="number well col-md-3 btn ">4</div>
+                        <div class="number well col-md-3 btn ">5</div>
+                        <div class="number well col-md-3 btn ">6</div>
+                      </div>
+                      <div class="row">
+                        <div class="number well col-md-3 btn ">7</div>
+                        <div class="number well col-md-3 btn ">8</div>
+                        <div class="number well col-md-3 btn ">9</div>
+                      </div>
+                      <div class="row">
+                        <div class="number well col-md-8 btn ">0</div>
+                        <div id="dot" class="well calc-button btn col-md-3">.</div>
+                      </div>
+                </div>
 
-            <div id='operatorContainer' class="col-md-3">
-                  <div id="addition" class="operator well col-md-12">add</div>
-                  <div id="subtraction" class="operator well col-md-12">subtract</div>
-                  <div id="multiplication" class="operator well col-md-12">multiply</div>
-                  <div id="division" class="operator well col-md-12">divide</div>
+                <div id='operatorContainer' class="col-md-3">
+                      <div id="addition" class="operator well  btn col-md-12">add</div>
+                      <div id="subtraction" class="operator well  btn col-md-12">subtract</div>
+                      <div id="multiplication" class="operator well btn col-md-12">multiply</div>
+                      <div id="division" class="operator well btn col-md-12">divide</div>
+                </div>
+                <div id="equals" class="col-md-6 btn well">equals</div>
+                <div id="clear" class="col-md-6 btn well">clear</div>
             </div>
-            <div id="equals" class="col-md-6 well">equals</div>
-            <div id="clear" class="col-md-6 well">clear</div>
-        </div>
-  </div>
-  <div class="col-md-4">Pure mathematics is, in its way, the poetry of logical ideas.
--Albert Einstein</div>
+      </div>
+      <div class="col-md-2"></div>
+      <div id="quote" class="col-md-4">
+        <p>Pure mathematics is, in its way, the poetry of logical ideas.</p>
+        <p id="albert">      -Albert Einstein</p>
+      </div>
+</div>
+
 </body>
 </html>

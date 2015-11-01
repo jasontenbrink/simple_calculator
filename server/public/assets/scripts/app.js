@@ -9,6 +9,7 @@ var isFirstNum = true, //while true push to firstNum arrays, else push to second
 
 var typeVal = "";
 
+var oldAnswer = "";  //needed to add chaining calculation functionality. Not implemented yet.
 
 $(document).ready(function () {
   $('#equals').on('click',clickEqualsButton);
@@ -16,7 +17,18 @@ $(document).ready(function () {
   $('#operatorContainer').on('click', '.operator', clickOperator);
   $('#dot').on('click', clickDot);
   $('#clear').on('click', clickClear);
+
+  $("#math").animate({
+    left: '45%',
+    
+    height: '50px',
+    width: '50px',
+    color: 'red'
 });
+});
+
+
+//click listener functions
 function clickClear() {
   firstNumInts = [];
   firstNumDecimals = [];
@@ -36,38 +48,6 @@ function clickEqualsButton(){
   secondNumInts = [];
   secondNumDecimals = [];
 }
-function sendCalcToServer() {
-  var x = makeDecimalNum(firstNumInts, firstNumDecimals),
-      y = makeDecimalNum(secondNumInts, secondNumDecimals);
-
-  $.ajax({
-      type: 'POST',
-      data: new Computation(x, y, typeVal),
-      url: determineUrlFromType(),
-      success: function (response) {
-        $('#answer').text(response);
-      }
-  });
-}
-function determineUrlFromType() {
-  var url = '';
-  switch (typeVal) {
-    case 'add':
-      url = '/addition';
-      break;
-    case 'subtract':
-        url = '/subtraction';
-        break;
-    case 'multiply':
-        url = '/multiplication';
-        break;
-    case 'divide':
-        url = '/division';
-        break;
-    default:
-  }
-  return url;
-}
 function clickOperator() {
   typeVal = $(this).text();
   isFirstNum = false;
@@ -78,14 +58,11 @@ function clickNumber() {
   displayEnteredNumber();
 }
 
-function displayEnteredNumber() {
-  if(isFirstNum){
-    $('#answer').text(makeDecimalNum(firstNumInts,firstNumDecimals));
-  } else{
-    $('#answer').text(makeDecimalNum(secondNumInts,secondNumDecimals));
-  }
-}
+//click listener helper functions
 
+// helper for clickNumber.  Holds logic for which number in the Computation
+// the clicked value should write to, as well as which side of the decimal it
+// is on.
 function pushDigitToNumber(digit) {
   if (isFirstNum && isInt) {
     firstNumInts.push( digit );
@@ -105,6 +82,57 @@ function pushDigitToNumber(digit) {
   }
 }
 
+//helper for clickNumber
+function displayEnteredNumber() {
+  if(isFirstNum){
+    $('#answer').text(makeDecimalNum(firstNumInts,firstNumDecimals));
+  } else{
+    $('#answer').text(makeDecimalNum(secondNumInts,secondNumDecimals));
+  }
+}
+
+//sending info to the server
+function sendCalcToServer() {
+  var x = makeDecimalNum(firstNumInts, firstNumDecimals),
+      y = makeDecimalNum(secondNumInts, secondNumDecimals);
+
+  $.ajax({
+      type: 'POST',
+      data: new Computation(x, y, typeVal),
+      url: determineUrlFromType(),
+      success: function (response) {
+        $('#answer').text(response);
+        oldAnswer = response;
+        console.log(oldAnswer);
+      }
+  });
+}
+//determines url to send request to
+function determineUrlFromType() {
+  var url = '';
+  switch (typeVal) {
+    case 'add':
+      url = '/addition';
+      break;
+    case 'subtract':
+        url = '/subtraction';
+        break;
+    case 'multiply':
+        url = '/multiplication';
+        break;
+    case 'divide':
+        url = '/division';
+        break;
+    default:
+  }
+  return url;
+}
+
+//constructor for computation object.  Has 2 values to be computed and the
+//operation to be executed on those 2 values.  In a non academic setting
+//Computation would also hold the calculations for various mathematical operations
+//and the operations would be done on the client side, only sending the answer
+//to the server
 function Computation(x, y, type) {
   this.x = x;
   this.y = y;

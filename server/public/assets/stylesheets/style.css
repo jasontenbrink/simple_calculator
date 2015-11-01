@@ -1,4 +1,14 @@
-
+.banner{
+  margin:0;
+  background: linear-gradient(to top, rgb(134, 181, 251),rgb(70, 120, 190));
+  position: relative;
+  height: 150px;
+  padding-top: 2%;
+}
+#math{
+  position: relative;
+  font-size: 200%;
+}
 .number{
   text-align: center;
   margin-right: 5%;
@@ -9,7 +19,32 @@ border: 2px solid rgba(0, 2, 6, 0.2);
 margin-bottom: 10px;
 border-radius: 5px;
 }
+body{
+//  font-size: 12pt;
+padding: 0;
+}
 #Calculator{
-  font-size: 200%;
+  margin-top: 30px;
+  font-size: 1.1vw;
   text-align: center;
+}
+
+#quote{
+  background: linear-gradient(to top, rgb(33, 4, 4), rgb(134, 181, 251));
+  /*rgb(48, 23, 23);*/
+  color: white;
+  /*float:right;*/
+  display: table-column;
+  height: 1000px;
+  font-family: Papyrus;
+  font-size: 2vw;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  right: .8%;
+}
+#albert{
+  color: rgb(161, 217, 168);
+  text-align: right;
+  padding-right: 20px;
 }

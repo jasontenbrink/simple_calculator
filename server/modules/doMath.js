@@ -4,12 +4,17 @@ function doMath(x,y,type) {
   var result = 0;
   switch (type) {
     case 'add':
-    result = x+y;
+        result = x+y;
       break;
     case 'subtract':
-    result = x-y;
+        result = x-y;
       break;
-    default:
+    case 'multiply':
+        result = x*y;
+      break;
+    case 'divide':
+        result = x/y;
+      break;
   }
   return result;
 }

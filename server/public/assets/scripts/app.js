@@ -31,6 +31,10 @@ function clickEqualsButton(){
   sendCalcToServer();
   isFirstNum = true;
   console.log('data object to send is: ', new Computation(makeDecimalNum(firstNumInts, firstNumDecimals), makeDecimalNum(secondNumInts, secondNumDecimals), typeVal));
+  firstNumInts = [];
+  firstNumDecimals = [];
+  secondNumInts = [];
+  secondNumDecimals = [];
 }
 function sendCalcToServer() {
   var x = makeDecimalNum(firstNumInts, firstNumDecimals),
@@ -70,22 +74,33 @@ function clickOperator() {
   isInt = true;
 }
 function clickNumber() {
-  var numString = $(this).text();
-  $('#answer').text(numString);
+  pushDigitToNumber($(this).text());
+  displayEnteredNumber();
+}
+
+function displayEnteredNumber() {
+  if(isFirstNum){
+    $('#answer').text(makeDecimalNum(firstNumInts,firstNumDecimals));
+  } else{
+    $('#answer').text(makeDecimalNum(secondNumInts,secondNumDecimals));
+  }
+}
+
+function pushDigitToNumber(digit) {
   if (isFirstNum && isInt) {
-    firstNumInts.push( numString );
+    firstNumInts.push( digit );
     console.log(firstNumInts + '.' + firstNumDecimals);
   }
   else if (isFirstNum) {
-    firstNumDecimals.push(numString);
+    firstNumDecimals.push(digit);
     console.log(firstNumInts + '.' + firstNumDecimals);
   }
   else if (isInt) {
-    secondNumInts.push(numString);
+    secondNumInts.push(digit);
     console.log(secondNumInts + '.' + secondNumDecimals);
   }
   else{
-    secondNumDecimals.push( numString );
+    secondNumDecimals.push( digit );
     console.log(secondNumInts + '.' + secondNumDecimals);
   }
 }
